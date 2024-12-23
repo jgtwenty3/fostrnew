@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff; /* Light mode background */
+    --foreground: #0a0a0a; /* Very dark text */
+    --card: #ffffff; /* White card background */
+    --card-foreground: #0a0a0a; /* Very dark card text */
+    --popover: #ffffff; /* White popover background */
+    --popover-foreground: #0a0a0a; /* Very dark popover text */
+    --primary: #181818; /* Dark primary color */
+    --primary-foreground: #fafafa; /* Very light text on primary */
+    --secondary: #f5f5f5; /* Light secondary color */
+    --secondary-foreground: #1A5B80; /* Dark secondary text */
+    --muted: #f5f5f5; /* Light muted color */
+    --muted-foreground: #737373; /* Medium muted text */
+    --accent: #f5f5f5; /* Light accent color */
+    --accent-foreground: #181818; /* Dark accent text */
+    --destructive: #d9364d; /* Red destructive color */
+    --destructive-foreground: #fafafa; /* Very light text on destructive */
+    --border: #e5e5e5; /* Light border color */
+    --input: #e5e5e5; /* Light input background */
+    --ring: #0a0a0a; /* Very dark ring color */
+    --radius: 0.5rem; /* Radius for rounded corners */
+    --chart-1: #ff6347; /* Chart color 1 */
+    --chart-2: #2e8b57; /* Chart color 2 */
+    --chart-3: #4682b4; /* Chart color 3 */
+    --chart-4: #ffec5c; /* Chart color 4 */
+    --chart-5: #ff9966; /* Chart color 5 */
+  }
+
+  .dark {
+    --background: #1A5B80; /* Very dark background */
+    --foreground: #fafafa; /* Very light text */
+    --card: #0a0a0a; /* Very dark card background */
+    --card-foreground: #fafafa; /* Very light card text */
+    --popover: #0a0a0a; /* Very dark popover background */
+    --popover-foreground: #fafafa; /* Very light popover text */
+    --primary: #fafafa; /* Very light primary color */
+    --primary-foreground: #181818; /* Dark primary text */
+    --secondary: #262626; /* Dark secondary color */
+    --secondary-foreground: #fafafa; /* Very light secondary text */
+    --muted: #262626; /* Dark muted color */
+    --muted-foreground: #a1a1a1; /* Medium-muted text */
+    --accent: #262626; /* Dark accent color */
+    --accent-foreground: #fafafa; /* Very light accent text */
+    --destructive: #9f2f3f; /* Dark red destructive color */
+    --destructive-foreground: #fafafa; /* Very light text on destructive */
+    --border: #262626; /* Dark border color */
+    --input: #262626; /* Dark input background */
+    --ring: #d4d4d4; /* Light ring color */
+    --chart-1: #4682b4; /* Dark chart color 1 */
+    --chart-2: #7d7dff; /* Dark chart color 2 */
+    --chart-3: #3fbc3f; /* Dark chart color 3 */
+    --chart-4: #e84d8a; /* Dark chart color 4 */
+    --chart-5: #a61d94; /* Dark chart color 5 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
