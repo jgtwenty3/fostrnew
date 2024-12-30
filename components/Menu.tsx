@@ -1,8 +1,8 @@
-"use client"
-import { signOutAction } from "@/app/actions";
+"use client";
+import { signOutAction, fetchUserRole } from "@/app/actions";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
 
 const menuItems = [
   {
@@ -32,7 +32,6 @@ const menuItems = [
         href: "/list/medicalRecords",
         visible: ["admin", "shelterWorker"],
       },
-     
     ],
   },
   {
@@ -60,13 +59,26 @@ const menuItems = [
   },
 ];
 
-const Menu = async () => {
-  const role = "admin"
+const Menu = () => {
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      const role = await fetchUserRole();
+      setRole(role);
+    };
+    
+    fetchRole();
+  }, []);
+
+  const handleSignOut = () => {
+    signOutAction();
+  };
+
   return (
     <div className="mt-4 text-sm">
       {menuItems.map((i) => (
         <div className="flex flex-col gap-2" key={i.title}>
-         
           {i.items.map((item) => {
             if (item.visible.includes(role)) {
               return item.href ? (
@@ -75,20 +87,21 @@ const Menu = async () => {
                   key={item.label}
                   className="flex items-center justify-center lg:justify-start gap-4 text-white py-2 md:px-2 rounded-md hover:bg-skylight"
                 >
-                  <Image src={item.icon} alt="" width={30} height={20} />
+                  <Image src={item.icon} alt={item.label} width={30} height={20} />
                   <span className="hidden lg:block">{item.label}</span>
                 </Link>
               ) : (
                 <div
                   key={item.label}
-                  onClick={item.onClick}
+                  onClick={handleSignOut}
                   className="flex items-center justify-center lg:justify-start gap-4 text-white py-2 md:px-2 rounded-md hover:bg-skylight cursor-pointer"
                 >
-                  <Image src={item.icon} alt="" width={30} height={20} />
+                  <Image src={item.icon} alt={item.label} width={30} height={20} />
                   <span className="hidden lg:block">{item.label}</span>
                 </div>
               );
             }
+            return null;
           })}
         </div>
       ))}

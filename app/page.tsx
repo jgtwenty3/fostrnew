@@ -25,10 +25,10 @@ export default async function Home() {
               </div>
               {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
             </div>
-          </nav>
-      <Hero />
+    </nav>
+      
       <main className="flex-1 flex flex-col gap-6 px-4">
-       
+    
       </main>
       <footer className=" fixed bottom-0 w-full flex items-center justify-center text-center text-xs gap-4 p-8 sm:gap-8 sm:py-16">
          <p className="text-darkBlue">Some footer content here.</p>

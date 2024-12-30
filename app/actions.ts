@@ -143,3 +143,50 @@ export const signOutAction = async () => {
   await supabase.auth.signOut();
   return redirect("/sign-in");
 };
+
+
+
+export const getAllShelters = async () => {
+  const supabase = await createClient();
+  try {
+    const { data, error } = await supabase
+      .from('shelters')
+      .select('*')
+     
+    
+
+    if (error) {
+      console.error('Error fetching shelters:', error);
+      return [];
+    }
+
+    return data.map(item => ({
+      id: item.id,
+      name: item.name,
+      phone:item.phone,
+      email:item.email,
+      street_address:item.street_address,
+      city:item.city,
+      state:item.state,
+      zipcode:item.zipcode,
+      about:item.about,
+
+    }));
+  } catch (error) {
+    console.error('Unexpected error fetching shelters:', error);
+    return [];
+  }
+};
+
+
+
+
+
+export const fetchUserRole = async () => {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  return user?.user_metadata.role || "";
+};
+
+
+
